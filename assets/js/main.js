@@ -89,7 +89,7 @@ async function loadProjects() {
     } catch (error) {
         console.error('Error loading projects:', error);
         loading.style.display = 'none';
-        showToast('Failed to load projects', 'error');
+        showToast('Failed to load projects from cache, trying GitHub API...', 'error');
         
         // Try GitHub API as fallback
         try {
