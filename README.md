@@ -143,7 +143,7 @@ To link to an external demo instead of deploying on this site:
 
 **Solutions**:
 - Ensure the repository is pinned to your GitHub profile
-- Check that it's not a fork or archived
+- Note: Forked or archived repositories can appear if they are pinned
 - Verify the workflow ran successfully (check Actions tab)
 - Wait for the next scheduled update (Sundays at midnight UTC) or trigger manually
 
