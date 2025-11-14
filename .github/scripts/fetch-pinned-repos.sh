@@ -63,6 +63,11 @@ if echo "$RESPONSE" | jq -e '.errors' > /dev/null 2>&1; then
   exit 1
 fi
 
+# Check that .data.user exists (user not found or permission denied)
+if ! echo "$RESPONSE" | jq -e '.data.user' > /dev/null 2>&1; then
+  echo "Error: User not found or permission denied"
+  exit 1
+fi
 # Extract pinned repos and transform to our format
 echo "$RESPONSE" | jq '[.data.user.pinnedItems.nodes[] | {
   name: .name,
