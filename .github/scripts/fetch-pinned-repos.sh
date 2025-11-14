@@ -2,11 +2,21 @@
 
 # Fetch pinned repositories from GitHub using GraphQL API
 # This script requires GITHUB_TOKEN environment variable
+#
+# Usage: fetch-pinned-repos.sh <username> [output-file]
+#   username: GitHub username to fetch pinned repos from (required)
+#   output-file: Path to output JSON file (default: projects.json)
 
 set -e
 
-USERNAME="${1:-brianwalkerdev}"
+USERNAME="${1}"
 OUTPUT_FILE="${2:-projects.json}"
+
+if [ -z "$USERNAME" ]; then
+  echo "Error: GitHub username is required as first argument"
+  echo "Usage: $0 <username> [output-file]"
+  exit 1
+fi
 
 if [ -z "$GITHUB_TOKEN" ]; then
   echo "Error: GITHUB_TOKEN environment variable is required"

@@ -42,7 +42,8 @@ jobs:
           chmod +x .github/scripts/download-thumbnails.sh
           
           # Fetch pinned repositories using GraphQL API
-          .github/scripts/fetch-pinned-repos.sh brianwalkerdev projects.json
+          # Use repository owner to make this workflow reusable
+          .github/scripts/fetch-pinned-repos.sh "${{ github.repository_owner }}" projects.json
           
           echo "Projects updated successfully"
           cat projects.json
