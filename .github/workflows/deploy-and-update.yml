@@ -104,7 +104,7 @@ jobs:
               "https://api.github.com/repos/brianwalkerdev/$PROJECT" | jq -e '.name' > /dev/null; then
               
               echo "Cloning $PROJECT..."
-              git clone "https://github.com/brianwalkerdev/$PROJECT.git" "/tmp/$PROJECT" || continue
+              git clone "https://${{ secrets.GITHUB_TOKEN }}@github.com/brianwalkerdev/$PROJECT.git" "/tmp/$PROJECT" || continue
               
               cd "/tmp/$PROJECT"
               
