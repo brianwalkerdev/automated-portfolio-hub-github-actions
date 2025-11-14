@@ -126,9 +126,18 @@ jobs:
                   cp -r public/* "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
                 fi
               else
-                # For non-Node projects, just copy the repo as-is
+                # For non-Node projects, copy only static site files (html, css, js, assets)
                 mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
-                cp -r . "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                shopt -s nullglob dotglob
+                for ext in html css js; do
+                  for file in *.$ext; do
+                    cp "$file" "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                  done
+                done
+                if [ -d "assets" ]; then
+                  cp -r assets "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                fi
+                shopt -u nullglob dotglob
               fi
               
               cd "$GITHUB_WORKSPACE"
