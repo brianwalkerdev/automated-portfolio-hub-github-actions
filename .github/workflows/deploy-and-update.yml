@@ -34,37 +34,40 @@ jobs:
 
       - name: Fetch pinned repositories
         id: fetch-repos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Fetch user's repositories
-          echo "Fetching repositories for brianwalkerdev..."
+          # Make scripts executable
+          chmod +x .github/scripts/fetch-pinned-repos.sh
+          chmod +x .github/scripts/download-thumbnails.sh
           
-          # Get all repos sorted by update date
-          REPOS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/brianwalkerdev/repos?sort=updated&per_page=100")
-          
-          # Create projects.json with repo data
-          echo "$REPOS" | jq '[.[] | select(.fork == false and .archived == false) | {
-            name: .name,
-            description: (.description // "No description available"),
-            updated: .updated_at,
-            url: .html_url,
-            homepage: (.homepage // ("/" + .name + "/")),
-            thumbnail: ("assets/img/" + .name + ".png")
-          }] | sort_by(.updated) | reverse | .[0:10]' > projects.json
+          # Fetch pinned repositories using GraphQL API
+          .github/scripts/fetch-pinned-repos.sh brianwalkerdev projects.json
           
           echo "Projects updated successfully"
           cat projects.json
 
-      - name: Commit updated projects.json
+      - name: Download thumbnails
+        run: |
+          # Download thumbnails from Open Graph images
+          .github/scripts/download-thumbnails.sh projects.json assets/img
+          
+          # Show downloaded thumbnails
+          echo "Thumbnails in assets/img:"
+          ls -lh assets/img/ || echo "No thumbnails directory yet"
+
+      - name: Commit updated projects.json and thumbnails
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          if git diff --quiet projects.json; then
-            echo "No changes to projects.json"
+          # Add all changes (projects.json and any new thumbnails)
+          git add projects.json assets/img/
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
           else
-            git add projects.json
-            git commit -m "Update projects.json with latest repositories"
+            git commit -m "Update projects.json and thumbnails with pinned repositories"
             git push
           fi
 
@@ -75,7 +78,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # ref: main  # Removed to ensure latest default branch is checked out
+          ref: main  # Explicitly check out main branch to get the latest updates
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

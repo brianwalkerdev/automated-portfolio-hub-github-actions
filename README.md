@@ -86,9 +86,33 @@ Run the workflow manually:
 2. Select "Deploy Portfolio and Update Projects"
 3. Click "Run workflow"
 
-## 📝 Requirements for Project Repositories
+## 📝 Requirements for Featured Repositories
 
-For automatic deployment, each repository should:
+### Pinning Repositories to Your Profile
+
+Only repositories **pinned to your GitHub profile** will be featured on this portfolio site. To pin repositories:
+
+1. Go to your GitHub profile page (https://github.com/your-username)
+2. Click "Customize your pins" 
+3. Select up to 6 repositories to feature
+4. Click "Save pins"
+
+The workflow automatically fetches your pinned repositories using the GitHub GraphQL API.
+
+### Setting Up Repository Thumbnails
+
+Thumbnails are automatically pulled from your repository's **social preview image** (Open Graph image):
+
+1. Go to your repository on GitHub
+2. Click "Settings" → "General" → Scroll to "Social preview"
+3. Click "Edit" and upload an image (recommended size: 1280×640px)
+4. The workflow will automatically download this image
+
+**Fallback**: If no custom social preview is set, the site uses a default gradient thumbnail.
+
+### Repository Deployment Requirements
+
+For repositories with live demos, ensure they:
 
 1. **Build to static files** (HTML, CSS, JS)
 2. **Output to standard directories**: `dist/`, `build/`, or `public/`
@@ -97,11 +121,61 @@ For automatic deployment, each repository should:
 Example `package.json`:
 ```json
 {
+  "name": "my-project",
   "scripts": {
     "build": "vite build"
   }
 }
 ```
+
+### Custom Homepage URL
+
+To link to an external demo instead of deploying on this site:
+1. Go to repository Settings
+2. Under "Website", enter your custom URL
+3. The workflow will use this as the "Live Demo" link
+
+## 🔍 Troubleshooting
+
+### Projects Not Showing Up
+
+**Issue**: My repository isn't appearing on the portfolio site.
+
+**Solutions**:
+- Ensure the repository is pinned to your GitHub profile
+- Check that it's not a fork or archived
+- Verify the workflow ran successfully (check Actions tab)
+- Wait for the next scheduled update (Sundays at midnight UTC) or trigger manually
+
+### Thumbnails Not Loading
+
+**Issue**: Repository thumbnail shows the default fallback image.
+
+**Solutions**:
+- Add a custom social preview image to your repository (Settings → Social preview)
+- Ensure the image is publicly accessible
+- Re-run the workflow after adding the image
+- Check that the image URL is valid in `projects.json`
+
+### Workflow Failures
+
+**Issue**: The GitHub Actions workflow is failing.
+
+**Solutions**:
+- Check the Actions tab for error logs
+- Ensure `GITHUB_TOKEN` has proper permissions
+- Verify all dependencies (jq, curl) are available
+- For build failures, check individual project build requirements
+
+### Empty projects.json
+
+**Issue**: The `projects.json` file is empty or not updating.
+
+**Solutions**:
+- Verify you have pinned repositories on your GitHub profile
+- Check that the GraphQL API query is successful in the workflow logs
+- Ensure the workflow has permissions to commit changes
+- Manually trigger the workflow from the Actions tab
 
 ## 🌍 Custom Domain Setup
 

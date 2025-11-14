@@ -161,7 +161,7 @@ function createProjectCard(project) {
             alt="${project.name} thumbnail" 
             class="project-thumbnail"
             loading="lazy"
-            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22200%22%3E%3Crect fill=%22%23333%22 width=%22400%22 height=%22200%22/%3E%3Ctext fill=%22%23666%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22sans-serif%22 font-size=%2220%22%3E${project.name}%3C/text%3E%3C/svg%3E'"
+            onerror="this.src='assets/img/default-thumbnail.svg'"
         >
         <div class="project-content">
             <h3 class="project-title">${escapeHtml(project.name)}</h3>
