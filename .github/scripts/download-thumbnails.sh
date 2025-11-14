@@ -31,11 +31,17 @@ jq -r '.[] | "\(.name)|\(.openGraphImageUrl)|\(.usesCustomOpenGraphImage)"' "$PR
   # Try to download the Open Graph image if it exists and is custom
   if [ "$imageUrl" != "null" ] && [ "$hasCustomImage" = "true" ]; then
     echo "Downloading custom thumbnail for $name from $imageUrl"
-    if curl -L -f -s -o "$THUMBNAIL_PATH" "$imageUrl"; then
-      echo "Successfully downloaded thumbnail for $name"
+    # Check Content-Type header before downloading
+    content_type=$(curl -sI "$imageUrl" | awk -F': ' '/^Content-Type:/ {print tolower($2)}' | tr -d '\r')
+    if [[ "$content_type" == image/* ]]; then
+      if curl -L -f -s --max-filesize 10485760 -o "$THUMBNAIL_PATH" "$imageUrl"; then
+        echo "Successfully downloaded thumbnail for $name"
+      else
+        echo "Failed to download thumbnail for $name, will use fallback"
+        rm -f "$THUMBNAIL_PATH"
+      fi
     else
-      echo "Failed to download thumbnail for $name, will use fallback"
-      rm -f "$THUMBNAIL_PATH"
+      echo "Skipped $name: Content-Type '$content_type' is not an image"
     fi
   else
     echo "No custom Open Graph image for $name, will use fallback"
