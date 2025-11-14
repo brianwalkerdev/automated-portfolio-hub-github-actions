@@ -1,0 +1,173 @@
+name: Deploy Portfolio and Update Projects
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Run weekly on Sundays at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  update-projects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch pinned repositories
+        id: fetch-repos
+        run: |
+          # Fetch user's repositories
+          echo "Fetching repositories for brianwalkerdev..."
+          
+          # Get all repos sorted by update date
+          REPOS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/brianwalkerdev/repos?sort=updated&per_page=100")
+          
+          # Create projects.json with repo data
+          echo "$REPOS" | jq '[.[] | select(.fork == false and .archived == false) | {
+            name: .name,
+            description: (.description // "No description available"),
+            updated: .updated_at,
+            url: .html_url,
+            homepage: (.homepage // ("/" + .name + "/")),
+            thumbnail: ("assets/img/" + .name + ".png")
+          }] | sort_by(.updated) | reverse | .[0:10]' > projects.json
+          
+          echo "Projects updated successfully"
+          cat projects.json
+
+      - name: Commit updated projects.json
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          if git diff --quiet projects.json; then
+            echo "No changes to projects.json"
+          else
+            git add projects.json
+            git commit -m "Update projects.json with latest repositories"
+            git push
+          fi
+
+  build-and-deploy-projects:
+    needs: update-projects
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # ref: main  # Removed to ensure latest default branch is checked out
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create dist directory
+        run: mkdir -p dist
+
+      - name: Copy main site files
+        run: |
+          cp index.html dist/
+          cp projects.json dist/
+          cp -r assets dist/
+
+      - name: Read projects and build each
+        run: |
+          # Read projects from projects.json
+          PROJECTS=$(cat projects.json | jq -r '.[].name')
+          
+          for PROJECT in $PROJECTS; do
+            echo "Processing project: $PROJECT"
+            
+            # Check if repo exists
+            if curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/brianwalkerdev/$PROJECT" | jq -e '.name' > /dev/null; then
+              
+              echo "Cloning $PROJECT..."
+              git clone "https://${{ secrets.GITHUB_TOKEN }}@github.com/brianwalkerdev/$PROJECT.git" "/tmp/$PROJECT" || continue
+              
+              cd "/tmp/$PROJECT"
+              
+              # Check if it's a Node.js project
+              if [ -f "package.json" ]; then
+                echo "Building Node.js project: $PROJECT"
+                npm install
+                if [ $? -ne 0 ]; then
+                  echo "npm install failed for $PROJECT, skipping deployment for this project."
+                  cd "$GITHUB_WORKSPACE"
+                  continue
+                fi
+                npm run build || npm run build:prod
+                if [ $? -ne 0 ]; then
+                  echo "Build failed for $PROJECT, skipping deployment for this project."
+                  cd "$GITHUB_WORKSPACE"
+                  continue
+                fi
+                
+                # Look for common build output directories
+                for BUILD_DIR in dist build public; do
+                  if [ -d "$BUILD_DIR" ]; then
+                    mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
+                    cp -r "$BUILD_DIR"/* "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                    break
+                  fi
+                done
+              else
+                # For non-Node projects, copy only static site files (html, css, js, assets)
+                mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
+                shopt -s nullglob dotglob
+                for ext in html css js; do
+                  for file in *.$ext; do
+                    cp "$file" "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                  done
+                done
+                if [ -d "assets" ]; then
+                  cp -r assets "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                fi
+                shopt -u nullglob dotglob
+              fi
+              
+              cd "$GITHUB_WORKSPACE"
+            else
+              echo "Project $PROJECT not found or not accessible"
+            fi
+          done
+
+      - name: Create .nojekyll file
+        run: touch dist/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist'
+
+  deploy:
+    needs: build-and-deploy-projects
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

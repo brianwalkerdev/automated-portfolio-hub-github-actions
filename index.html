@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brian Walker's Portfolio Hub - Showcasing pinned GitHub projects">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:title" content="Brian Walker Portfolio Hub">
+    <meta property="og:description" content="Showcasing my latest projects and developments">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://projects.brianwalker.dev">
+    
+    <title>Brian Walker - Portfolio Hub</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Brian Walker</h1>
+                <p class="subtitle">Portfolio Hub</p>
+            </div>
+            <div class="header-controls">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="icon-button" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <!-- Refresh Button -->
+                <button id="refresh-btn" class="icon-button" aria-label="Refresh projects">
+                    <span class="refresh-icon">🔄</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- About Section -->
+            <section class="about">
+                <h2>About</h2>
+                <p>Welcome to my portfolio hub! This page automatically showcases all my pinned GitHub repositories. Each project includes a live demo and links to the source code.</p>
+            </section>
+
+            <!-- Controls Section -->
+            <section class="controls">
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="search" class="search-input" placeholder="Search projects...">
+                </div>
+
+                <!-- Sorting Controls -->
+                <div class="sort-container">
+                    <label for="sort-select">Sort by:</label>
+                    <select id="sort-select" class="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="alphabetical">Alphabetical</option>
+                    </select>
+                </div>
+
+                <!-- Theme Selector -->
+                <div class="theme-selector">
+                    <label>Accent Color:</label>
+                    <div class="theme-buttons">
+                        <button class="theme-btn active" data-theme="neutral" aria-label="Neutral theme"></button>
+                        <button class="theme-btn" data-theme="green" aria-label="Green theme"></button>
+                        <button class="theme-btn" data-theme="blue" aria-label="Blue theme"></button>
+                        <button class="theme-btn" data-theme="purple" aria-label="Purple theme"></button>
+                        <button class="theme-btn" data-theme="orange" aria-label="Orange theme"></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Grid -->
+            <section class="projects-section">
+                <h2>Projects</h2>
+                <div id="loading" class="loading" role="status" aria-live="polite">Loading projects...</div>
+                <div id="projects-grid" class="projects-grid"></div>
+                <div id="no-results" class="no-results" style="display: none;" role="status" aria-live="polite">No projects found.</div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Brian Walker. All rights reserved.</p>
+            <p>
+                <a href="https://github.com/brianwalkerdev" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
