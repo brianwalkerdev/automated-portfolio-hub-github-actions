@@ -63,7 +63,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           
           # Add all changes (projects.json and any new thumbnails)
-          git add projects.json assets/img/
+          git add projects.json assets/img/ 2>/dev/null || git add projects.json
           
           if git diff --staged --quiet; then
             echo "No changes to commit"
