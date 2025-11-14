@@ -111,8 +111,18 @@ jobs:
               # Check if it's a Node.js project
               if [ -f "package.json" ]; then
                 echo "Building Node.js project: $PROJECT"
-                npm install || true
-                npm run build || npm run build:prod || true
+                npm install
+                if [ $? -ne 0 ]; then
+                  echo "npm install failed for $PROJECT, skipping deployment for this project."
+                  cd "$GITHUB_WORKSPACE"
+                  continue
+                fi
+                npm run build || npm run build:prod
+                if [ $? -ne 0 ]; then
+                  echo "Build failed for $PROJECT, skipping deployment for this project."
+                  cd "$GITHUB_WORKSPACE"
+                  continue
+                fi
                 
                 # Look for common build output directories
                 if [ -d "dist" ]; then
