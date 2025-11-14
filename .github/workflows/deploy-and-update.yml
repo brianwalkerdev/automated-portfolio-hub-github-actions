@@ -125,16 +125,13 @@ jobs:
                 fi
                 
                 # Look for common build output directories
-                if [ -d "dist" ]; then
-                  mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
-                  cp -r dist/* "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
-                elif [ -d "build" ]; then
-                  mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
-                  cp -r build/* "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
-                elif [ -d "public" ]; then
-                  mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
-                  cp -r public/* "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
-                fi
+                for BUILD_DIR in dist build public; do
+                  if [ -d "$BUILD_DIR" ]; then
+                    mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
+                    cp -r "$BUILD_DIR"/* "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                    break
+                  fi
+                done
               else
                 # For non-Node projects, copy only static site files (html, css, js, assets)
                 mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
