@@ -1,13 +1,23 @@
 [
   {
+    "name": "responsive-web-page-advanced-layouts",
+    "description": "An advanced responsive webpage demonstrating grid and flexbox layouts for scalable and adaptive front-end design.",
+    "updated": "2025-11-15T06:25:14Z",
+    "url": "https://github.com/brianwalkerdev/responsive-web-page-advanced-layouts",
+    "homepage": "https://brianwalkerdev.github.io/responsive-web-page-advanced-layouts/",
+    "thumbnail": "assets/img/responsive-web-page-advanced-layouts.png",
+    "openGraphImageUrl": "https://repository-images.githubusercontent.com/282557265/82826e35-75a4-4799-b1fa-e335a436282b",
+    "usesCustomOpenGraphImage": true
+  },
+  {
     "name": "responsive-web-page-html-css",
     "description": "A clean, mobile-friendly responsive web page built using HTML5 and CSS3. Showcases layout design, typography, and accessibility best practices.",
     "updated": "2025-11-15T04:17:52Z",
     "url": "https://github.com/brianwalkerdev/responsive-web-page-html-css",
     "homepage": "https://brianwalkerdev.github.io/responsive-web-page-html-css/",
     "thumbnail": "assets/img/responsive-web-page-html-css.png",
-    "openGraphImageUrl": "https://opengraph.githubassets.com/94f0d1ab9748c266c05eaea0d7f783193d8294e1a9040077281bb622564c3145/brianwalkerdev/responsive-web-page-html-css",
-    "usesCustomOpenGraphImage": false
+    "openGraphImageUrl": "https://repository-images.githubusercontent.com/280724960/72005d35-ed43-47b3-b49d-b64f51280558",
+    "usesCustomOpenGraphImage": true
   },
   {
     "name": "game-show-web-app",
@@ -47,16 +57,6 @@
     "homepage": "https://brianwalkerdev.github.io/modern-web-page-sass/",
     "thumbnail": "assets/img/modern-web-page-sass.png",
     "openGraphImageUrl": "https://opengraph.githubassets.com/bae8f5d77589180241873855c3b5b827dbd927045e10f2a1d7680563913e4f59/brianwalkerdev/modern-web-page-sass",
-    "usesCustomOpenGraphImage": false
-  },
-  {
-    "name": "responsive-web-page-advanced-layouts",
-    "description": "An advanced responsive webpage demonstrating grid and flexbox layouts for scalable and adaptive front-end design.",
-    "updated": "2025-11-10T02:47:32Z",
-    "url": "https://github.com/brianwalkerdev/responsive-web-page-advanced-layouts",
-    "homepage": "https://brianwalkerdev.github.io/responsive-web-page-advanced-layouts/",
-    "thumbnail": "assets/img/responsive-web-page-advanced-layouts.png",
-    "openGraphImageUrl": "https://opengraph.githubassets.com/fb42c21d560c3fdd473e7951494df5b970c87f032b8ea302efa498e4b3c5811c/brianwalkerdev/responsive-web-page-advanced-layouts",
     "usesCustomOpenGraphImage": false
   }
 ]
