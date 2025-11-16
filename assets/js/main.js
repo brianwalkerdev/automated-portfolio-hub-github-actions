@@ -15,6 +15,9 @@ const themeBtns = document.querySelectorAll('.theme-btn');
 const loading = document.getElementById('loading');
 const noResults = document.getElementById('no-results');
 const toast = document.getElementById('toast');
+const imageOverlay = document.getElementById('image-overlay');
+const overlayImage = document.getElementById('overlay-image');
+const overlayClose = document.getElementById('overlay-close');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -62,6 +65,21 @@ function attachEventListeners() {
     
     // Refresh button
     refreshBtn.addEventListener('click', refreshProjects);
+    
+    // Image overlay
+    overlayClose.addEventListener('click', closeImageOverlay);
+    imageOverlay.addEventListener('click', (e) => {
+        if (e.target === imageOverlay) {
+            closeImageOverlay();
+        }
+    });
+    
+    // Keyboard support for overlay
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && imageOverlay.classList.contains('show')) {
+            closeImageOverlay();
+        }
+    });
 }
 
 // Load Projects
@@ -181,6 +199,10 @@ function createProjectCard(project) {
         </div>
     `;
     
+    // Add click handler to thumbnail
+    const thumbnail = card.querySelector('.project-thumbnail');
+    thumbnail.addEventListener('click', () => openImageOverlay(thumbnailSrc, project.name));
+    
     return card;
 }
 
@@ -296,4 +318,20 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+// Open Image Overlay
+function openImageOverlay(imageSrc, altText) {
+    overlayImage.src = imageSrc;
+    overlayImage.alt = `Full size: ${altText}`;
+    imageOverlay.classList.add('show');
+    imageOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+// Close Image Overlay
+function closeImageOverlay() {
+    imageOverlay.classList.remove('show');
+    imageOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // Restore scrolling
 }
