@@ -6,6 +6,21 @@ A dynamic portfolio website that automatically showcases pinned GitHub repositor
 
 [https://projects.brianwalker.dev](https://projects.brianwalker.dev)
 
+## 📖 Quick Reference
+
+**System Status**: ✅ Fully Functional  
+**Latest Verification**: 2025-11-16
+
+- **Main Portfolio**: https://projects.brianwalker.dev/
+- **Project URLs**: https://projects.brianwalker.dev/`<project-name>`/
+- **Workflow**: Runs weekly + on every push to main
+- **Featured Projects**: 6 pinned repositories currently deployed
+
+### Need Help?
+- 📘 See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for deployment details
+- 📋 See [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md) for system verification
+- 📄 See [SUMMARY.md](SUMMARY.md) for investigation summary
+
 ## ✨ Features
 
 - **Automatic Project Discovery**: Fetches and displays repositories from GitHub
@@ -128,12 +143,31 @@ Example `package.json`:
 }
 ```
 
-### Custom Homepage URL
+### Live Demo URL Configuration
 
-To link to an external demo instead of deploying on this site:
-1. Go to repository Settings
-2. Under "Website", enter your custom URL
-3. The workflow will use this as the "Live Demo" link
+Each featured project can have its live demo configured in **three ways**:
+
+#### Option 1: Automatic Deployment (Default) ⭐
+- **No configuration needed**
+- Project is automatically deployed to `/<project-name>/`
+- Accessible at: `https://projects.brianwalker.dev/<project-name>/`
+- **This is the recommended approach!**
+
+#### Option 2: Custom Repository Homepage
+- Go to repository Settings → General → Website
+- Enter custom URL (e.g., `https://example.com/my-project`)
+- The workflow will use this URL for the "Live Demo" button
+- Project may or may not be deployed to this hub
+
+#### Option 3: External Deployment Only
+- Set the Website URL to an external deployment (Netlify, Vercel, etc.)
+- The workflow won't deploy the project here
+- Only shows a link to the external deployment
+
+**Example URLs**:
+- Automatic: `https://projects.brianwalker.dev/responsive-web-page-html-css/`
+- Custom: `https://brianwalkerdev.github.io/frontend-web-application/`
+- External: `https://myapp.netlify.app/`
 
 ## 🔍 Troubleshooting
 
