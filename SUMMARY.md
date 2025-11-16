@@ -65,7 +65,7 @@ Most projects use external URLs pointing to `brianwalkerdev.github.io/<project-n
 
 ## Documentation Created
 
-I've added two comprehensive guides to help you understand and maintain the system:
+I've added comprehensive documentation to help you understand and maintain the system:
 
 ### 📘 DEPLOYMENT_GUIDE.md
 - Explains the complete deployment workflow
@@ -80,6 +80,17 @@ I've added two comprehensive guides to help you understand and maintain the syst
 - Provides workflow log evidence
 - Shows current deployment status
 - Confirms system is fully operational
+
+### 🏗️ ARCHITECTURE.md
+- Visual architecture and data flows
+- Component interactions
+- Directory structure
+- URL mapping
+
+### 📑 DOCS_INDEX.md
+- Documentation navigation hub
+- Quick search by topic
+- Organized by role
 
 ## Recommendations
 
