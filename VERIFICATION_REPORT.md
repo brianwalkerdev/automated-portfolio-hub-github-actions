@@ -59,6 +59,7 @@ All projects deployed to GitHub Pages:
 | game-show-web-app | `/game-show-web-app/` | ✅ Deployed |
 | interactive-image-gallery-js | `/interactive-image-gallery-js/` | ✅ Deployed |
 | responsive-web-page-advanced-layouts | `/responsive-web-page-advanced-layouts/` | ✅ Deployed |
+| modern-web-page-sass | `/modern-web-page-sass/` | ✅ Deployed |
 
 **Evidence from Workflow Logs** (Run #19407051225):
 ```
