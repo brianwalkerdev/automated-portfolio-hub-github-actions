@@ -24,7 +24,7 @@ This document explains how to build the portfolio hub locally and understand whe
 The built files are live and accessible at:
 
 - **Main Portfolio**: https://projects.brianwalker.dev/
-- **Project Demos**: https://projects.brianwalker.dev/`<project-name>`/
+- **Project Demos**: https://projects.brianwalker.dev/<project-name>/
 
 Examples:
 - https://projects.brianwalker.dev/responsive-web-page-html-css/
