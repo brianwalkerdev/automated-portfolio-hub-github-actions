@@ -129,13 +129,33 @@ jobs:
                 fi
                 
                 # Look for common build output directories
+                DEPLOYED=false
                 for BUILD_DIR in dist build public; do
                   if [ -d "$BUILD_DIR" ]; then
                     mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
                     cp -r "$BUILD_DIR"/* "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                    DEPLOYED=true
                     break
                   fi
                 done
+                
+                # If no standard build directory found, copy static site files as fallback
+                if [ "$DEPLOYED" = false ]; then
+                  echo "No standard build directory found for $PROJECT, copying static files..."
+                  mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
+                  shopt -s nullglob
+                  # Copy root-level HTML files
+                  for file in *.html; do
+                    cp "$file" "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                  done
+                  # Copy common directories (this will include CSS, JS, and asset files)
+                  for dir in css js images assets photos svgs; do
+                    if [ -d "$dir" ]; then
+                      cp -r "$dir" "$GITHUB_WORKSPACE/dist/$PROJECT/" || true
+                    fi
+                  done
+                  shopt -u nullglob
+                fi
               else
                 # For non-Node projects, copy only static site files (html, css, js, assets)
                 mkdir -p "$GITHUB_WORKSPACE/dist/$PROJECT"
