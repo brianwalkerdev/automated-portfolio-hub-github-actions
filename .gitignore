@@ -1,0 +1,25 @@
+# Build artifacts - created during GitHub Actions workflow
+/dist/
+
+# Temporary files
+/tmp/
+
+# Node modules (if any project is cloned locally)
+node_modules/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

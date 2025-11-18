@@ -18,8 +18,13 @@ A dynamic portfolio website that automatically showcases pinned GitHub repositor
 
 ### Need Help?
 - 📘 See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for deployment details
+- 🔨 See [BUILD.md](BUILD.md) for understanding where built files are located
 - 📋 See [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md) for system verification
 - 📄 See [SUMMARY.md](SUMMARY.md) for investigation summary
+
+### ❓ Common Questions
+- **Where is the `/dist/` folder?** It's not in the repository—it's a build artifact created during deployment. See [BUILD.md](BUILD.md).
+- **Where are the built project files?** They're live at https://projects.brianwalker.dev/`<project-name>`/. See [BUILD.md](BUILD.md) for details.
 
 ## ✨ Features
 
@@ -34,6 +39,8 @@ A dynamic portfolio website that automatically showcases pinned GitHub repositor
 
 ## 📁 Project Structure
 
+### Repository Structure (Source Code)
+
 ```
 projects.brianwalker.dev/
 ├── index.html                          # Main portfolio page
@@ -44,9 +51,26 @@ projects.brianwalker.dev/
 │   ├── js/
 │   │   └── main.js                     # Dynamic functionality
 │   └── img/                            # Project thumbnails
-└── .github/
-    └── workflows/
-        └── deploy-and-update.yml       # Deployment automation
+├── .github/
+│   └── workflows/
+│       └── deploy-and-update.yml       # Deployment automation
+├── .gitignore                          # Excludes build artifacts
+└── BUILD.md                            # Local build instructions
+```
+
+### Deployed Structure (GitHub Pages)
+
+**Note:** The `/dist/` folder is **not stored in the repository**. It is a build artifact created during the GitHub Actions workflow and deployed to GitHub Pages. See [BUILD.md](BUILD.md) for details.
+
+```
+https://projects.brianwalker.dev/       # Served from /dist/ (build artifact)
+├── index.html                          # Main portfolio hub
+├── projects.json                       # Project metadata
+├── assets/                             # Main site assets
+├── responsive-web-page-html-css/      # Built project 1
+├── frontend-web-application/          # Built project 2
+├── game-show-web-app/                 # Built project 3
+└── ... (more projects)
 ```
 
 ## 🚀 How It Works
@@ -56,15 +80,21 @@ projects.brianwalker.dev/
 - Fetches latest repositories from GitHub API
 - Updates `projects.json` with project metadata
 
-### 2. Building Projects
+### 2. Building Projects (During Workflow)
+- **Creates temporary `/dist/` folder** (not committed to repository)
 - Each repository is cloned
 - If it's a Node.js project, runs `npm install && npm run build`
 - Copies build output to `/dist/<project-name>/`
+- Copies main site files to `/dist/`
 
 ### 3. Deployment
-- All files are deployed to GitHub Pages
-- Main site at root
-- Each project at `/<project-name>/`
+- Uploads `/dist/` as GitHub Pages artifact
+- GitHub Pages serves the site:
+  - Main site at root: https://projects.brianwalker.dev/
+  - Each project at subdirectory: https://projects.brianwalker.dev/`<project-name>`/
+- **The `/dist/` folder is deleted after deployment** (not stored in repository)
+
+> 💡 **Where are the built files?** They're deployed to GitHub Pages, not stored in the repository. See [BUILD.md](BUILD.md) for details on viewing or building locally.
 
 ## 🎨 Customization
 

@@ -16,6 +16,7 @@ Welcome to the portfolio hub documentation! This index will help you find the in
 | Document | Purpose | When to Read |
 |----------|---------|--------------|
 | [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) | Complete deployment process explanation | Setting up or troubleshooting |
+| [BUILD.md](BUILD.md) | Where to find built files and local builds | Looking for `/dist/` folder |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Visual architecture and data flows | Understanding how it works |
 | [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md) | System verification and testing evidence | Confirming functionality |
 
@@ -107,6 +108,12 @@ Welcome to the portfolio hub documentation! This index will help you find the in
 **"Where are projects deployed to?"**
 → URL structure: `https://projects.brianwalker.dev/<project-name>/`
 
+**"Where is the /dist folder?"**
+→ Build artifacts guide ([BUILD.md](BUILD.md))
+
+**"Where are the built project files?"**
+→ Build artifacts guide ([BUILD.md](BUILD.md))
+
 **"What are the project requirements?"**
 → Requirements section ([README.md](README.md#repository-deployment-requirements))
 
@@ -152,12 +159,13 @@ See [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md) for detailed status.
 |------|------|---------|----------|
 | README.md | 7.8K | Main overview and quick reference | Everyone |
 | SUMMARY.md | 5.5K | Investigation summary | Quick readers |
+| BUILD.md | 6.8K | Build artifacts and local builds | Developers looking for `/dist/` |
 | DEPLOYMENT_GUIDE.md | 7.2K | Complete deployment guide | Developers/Operators |
 | ARCHITECTURE.md | 15K | System architecture and flows | Technical readers |
 | VERIFICATION_REPORT.md | 8.4K | Verification and testing results | Developers/QA |
 | DOCS_INDEX.md | (this file) | Documentation navigation | Everyone |
 
-Total: ~44K of comprehensive documentation covering all aspects of the system.
+Total: ~51K of comprehensive documentation covering all aspects of the system.
 
 ---
 
