@@ -74,7 +74,7 @@ echo "$RESPONSE" | jq '[.data.user.pinnedItems.nodes[] | {
   description: (.description // "No description available"),
   updated: .updatedAt,
   url: .url,
-  homepage: (.homepageUrl // ("/" + .name + "/")),
+  homepage: (if .homepageUrl != null and .homepageUrl != "" then .homepageUrl else ("/" + .name + "/") end),
   thumbnail: ("assets/img/" + .name + ".png"),
   openGraphImageUrl: .openGraphImageUrl,
   usesCustomOpenGraphImage: .usesCustomOpenGraphImage

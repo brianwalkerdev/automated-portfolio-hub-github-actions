@@ -176,6 +176,11 @@ function createProjectCard(project) {
     // Use openGraphImageUrl if available, otherwise fall back to local thumbnail
     const thumbnailSrc = project.openGraphImageUrl || project.thumbnail;
     
+    // Use project homepage if set, otherwise default to /<project-name>/
+    const homepage = project.homepage && project.homepage.trim() !== '' 
+        ? project.homepage 
+        : `/${project.name}/`;
+    
     card.innerHTML = `
         <img 
             src="${thumbnailSrc}" 
@@ -189,7 +194,7 @@ function createProjectCard(project) {
             <p class="project-description">${escapeHtml(project.description)}</p>
             <p class="project-date">Updated: ${formattedDate}</p>
             <div class="project-links">
-                <a href="${project.homepage}" class="project-link primary" target="_blank" rel="noopener noreferrer">
+                <a href="${homepage}" class="project-link primary" target="_blank" rel="noopener noreferrer">
                     Live Demo
                 </a>
                 <a href="${project.url}" class="project-link secondary" target="_blank" rel="noopener noreferrer">
