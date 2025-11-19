@@ -1,0 +1,35 @@
+{
+  "name": "projects-brianwalker-dev",
+  "version": "1.0.0",
+  "description": "Dynamic portfolio hub showcasing pinned GitHub repositories with live demos, theme customization, and automated deployment",
+  "main": "index.html",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npx serve -l 8080 .",
+    "preview": "npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianwalkerdev/projects.brianwalker.dev.git"
+  },
+  "keywords": [
+    "portfolio",
+    "github",
+    "projects",
+    "showcase",
+    "static-site",
+    "javascript",
+    "css",
+    "html",
+    "responsive",
+    "dark-mode",
+    "theme-switcher",
+    "github-pages"
+  ],
+  "author": "Brian Walker <brianwalkerdev@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brianwalkerdev/projects.brianwalker.dev/issues"
+  },
+  "homepage": "https://projects.brianwalker.dev"
+}

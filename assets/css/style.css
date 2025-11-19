@@ -33,6 +33,11 @@ body.light-mode {
 }
 
 /* Theme Colors */
+body[data-theme="neutral"] {
+    --accent-color: #888888;
+    --accent-hover: #666666;
+}
+
 body[data-theme="green"] {
     --accent-color: #10b981;
     --accent-hover: #059669;
