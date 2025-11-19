@@ -98,6 +98,11 @@ projects.brianwalker.dev/
         └── deploy-and-update.yml  # Automated deployment
 ```
 
+> **Note:**  
+> - `build.js` is the main build script that compiles project data and assets for deployment.  
+> - `.github/workflows/deploy-and-update.yml` is a GitHub Actions workflow that automates building and deploying the site, as well as updating project data on a schedule.  
+>  
+> For more details on the build and deployment process, see [CONTRIBUTING.md](CONTRIBUTING.md).
 ## 👤 Contact
 
 **Brian Walker**  
