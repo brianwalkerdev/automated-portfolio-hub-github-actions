@@ -1,62 +1,62 @@
 [
   {
-    "name": "interactive-image-gallery-js",
-    "description": "An interactive image gallery built with vanilla JavaScript. Features dynamic modals, search functionality, and responsive grid design.",
-    "updated": "2025-11-18T19:34:38Z",
-    "url": "https://github.com/brianwalkerdev/interactive-image-gallery-js",
-    "homepage": "/interactive-image-gallery-js/",
-    "thumbnail": "assets/img/interactive-image-gallery-js.png",
-    "openGraphImageUrl": "https://repository-images.githubusercontent.com/323187097/f685b569-ad08-4193-b08c-a78a504d894e",
+    "name": "phrase-guessing-game-javascript-app",
+    "description": "Wheel-of-Success style phrase guessing game with custom logic, randomized phrases, and responsive UI.",
+    "updated": "2025-11-19T00:28:33Z",
+    "url": "https://github.com/brianwalkerdev/phrase-guessing-game-javascript-app",
+    "homepage": "/phrase-guessing-game-javascript-app/",
+    "thumbnail": "assets/img/phrase-guessing-game-javascript-app.png",
+    "openGraphImageUrl": "https://repository-images.githubusercontent.com/575927606/9ce3968a-5576-453a-82d2-f84ebc36654f",
     "usesCustomOpenGraphImage": true
   },
   {
-    "name": "modern-web-page-sass",
-    "description": "A modern web page styled using SASS, focusing on modular structure, reusable components, and maintainable front-end styling techniques.",
-    "updated": "2025-11-18T19:34:05Z",
-    "url": "https://github.com/brianwalkerdev/modern-web-page-sass",
-    "homepage": "/modern-web-page-sass/",
-    "thumbnail": "assets/img/modern-web-page-sass.png",
-    "openGraphImageUrl": "https://repository-images.githubusercontent.com/289570450/7ef35b57-29bb-4a81-8b50-e737eef45760",
-    "usesCustomOpenGraphImage": true
-  },
-  {
-    "name": "responsive-web-page-html-css",
-    "description": "A clean, mobile-friendly responsive web page built using HTML5 and CSS3. Showcases layout design, typography, and accessibility best practices.",
-    "updated": "2025-11-18T19:33:28Z",
-    "url": "https://github.com/brianwalkerdev/responsive-web-page-html-css",
-    "homepage": "/responsive-web-page-html-css/",
-    "thumbnail": "assets/img/responsive-web-page-html-css.png",
-    "openGraphImageUrl": "https://repository-images.githubusercontent.com/280724960/72005d35-ed43-47b3-b49d-b64f51280558",
-    "usesCustomOpenGraphImage": true
-  },
-  {
-    "name": "responsive-web-page-advanced-layouts",
-    "description": "An advanced responsive webpage demonstrating grid and flexbox layouts for scalable and adaptive front-end design.",
-    "updated": "2025-11-18T06:47:37Z",
-    "url": "https://github.com/brianwalkerdev/responsive-web-page-advanced-layouts",
-    "homepage": "/responsive-web-page-advanced-layouts/",
-    "thumbnail": "assets/img/responsive-web-page-advanced-layouts.png",
-    "openGraphImageUrl": "https://repository-images.githubusercontent.com/282557265/82826e35-75a4-4799-b1fa-e335a436282b",
-    "usesCustomOpenGraphImage": true
-  },
-  {
-    "name": "frontend-web-application",
-    "description": "A front-end web application demonstrating dynamic user interactions, responsive UI design, and clean JavaScript architecture.",
-    "updated": "2025-11-18T06:47:10Z",
-    "url": "https://github.com/brianwalkerdev/frontend-web-application",
-    "homepage": "/frontend-web-application/",
-    "thumbnail": "assets/img/frontend-web-application.png",
+    "name": "responsive-admin-dashboard-web-app",
+    "description": "Feature-rich dashboard UI with charts, messaging, alerts, notifications, and customizable settings.",
+    "updated": "2025-11-19T00:12:55Z",
+    "url": "https://github.com/brianwalkerdev/responsive-admin-dashboard-web-app",
+    "homepage": "/responsive-admin-dashboard-web-app/",
+    "thumbnail": "assets/img/responsive-admin-dashboard-web-app.png",
     "openGraphImageUrl": "https://repository-images.githubusercontent.com/575925639/75770a1e-4af1-46e0-b578-96f0113ba665",
     "usesCustomOpenGraphImage": true
   },
   {
-    "name": "game-show-web-app",
-    "description": "An engaging browser-based game app built with HTML, CSS and JavaScript where players guess a random phrase “game-show” style. Demonstrates dynamic UI, event handling and front-end logic. Keywords: game show web app, word guessing game, JavaScript game, interactive front-end, browser game, HTML5 game, CSS animation",
-    "updated": "2025-11-18T06:46:42Z",
-    "url": "https://github.com/brianwalkerdev/game-show-web-app",
-    "homepage": "/game-show-web-app/",
-    "thumbnail": "assets/img/game-show-web-app.png",
-    "openGraphImageUrl": "https://repository-images.githubusercontent.com/575927606/9ce3968a-5576-453a-82d2-f84ebc36654f",
+    "name": "interactive-photo-gallery-vanilla-javascript",
+    "description": "Interactive photo gallery with instant search, lightbox previews, animations, and keyboard accessibility.",
+    "updated": "2025-11-19T00:12:25Z",
+    "url": "https://github.com/brianwalkerdev/interactive-photo-gallery-vanilla-javascript",
+    "homepage": "/interactive-photo-gallery-vanilla-javascript/",
+    "thumbnail": "assets/img/interactive-photo-gallery-vanilla-javascript.png",
+    "openGraphImageUrl": "https://repository-images.githubusercontent.com/323187097/f685b569-ad08-4193-b08c-a78a504d894e",
+    "usesCustomOpenGraphImage": true
+  },
+  {
+    "name": "sass-ui-kit-modular-design-system",
+    "description": "Scalable SASS UI kit featuring reusable components, design tokens, mixins, and modular architecture.",
+    "updated": "2025-11-19T00:12:17Z",
+    "url": "https://github.com/brianwalkerdev/sass-ui-kit-modular-design-system",
+    "homepage": "/sass-ui-kit-modular-design-system/",
+    "thumbnail": "assets/img/sass-ui-kit-modular-design-system.png",
+    "openGraphImageUrl": "https://repository-images.githubusercontent.com/289570450/7ef35b57-29bb-4a81-8b50-e737eef45760",
+    "usesCustomOpenGraphImage": true
+  },
+  {
+    "name": "newsletter-signup-landing-page-ui-ux",
+    "description": "Conversion-focused signup landing page with responsive layouts, form validation, and mobile-first UI/UX.",
+    "updated": "2025-11-19T00:12:09Z",
+    "url": "https://github.com/brianwalkerdev/newsletter-signup-landing-page-ui-ux",
+    "homepage": "/newsletter-signup-landing-page-ui-ux/",
+    "thumbnail": "assets/img/newsletter-signup-landing-page-ui-ux.png",
+    "openGraphImageUrl": "https://repository-images.githubusercontent.com/282557265/82826e35-75a4-4799-b1fa-e335a436282b",
+    "usesCustomOpenGraphImage": true
+  },
+  {
+    "name": "responsive-personal-portfolio-website",
+    "description": "A modern, mobile-first portfolio website built with semantic HTML and responsive CSS.",
+    "updated": "2025-11-19T00:11:54Z",
+    "url": "https://github.com/brianwalkerdev/responsive-personal-portfolio-website",
+    "homepage": "/responsive-personal-portfolio-website/",
+    "thumbnail": "assets/img/responsive-personal-portfolio-website.png",
+    "openGraphImageUrl": "https://repository-images.githubusercontent.com/280724960/72005d35-ed43-47b3-b49d-b64f51280558",
     "usesCustomOpenGraphImage": true
   }
 ]
