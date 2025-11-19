@@ -14,9 +14,9 @@
     --text-secondary: #b0b0b0;
     --border-color: #404040;
     
-    /* Neutral Theme (Default) */
-    --accent-color: #888888;
-    --accent-hover: #999999;
+    /* Green Theme (Default) */
+    --accent-color: #10b981;
+    --accent-hover: #059669;
     
     /* Transitions */
     --transition: all 0.3s ease;

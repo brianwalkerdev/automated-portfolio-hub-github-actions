@@ -1,7 +1,7 @@
 // State Management
 let projects = [];
 let filteredProjects = [];
-let currentTheme = localStorage.getItem('theme') || 'neutral';
+let currentTheme = localStorage.getItem('theme') || 'green';
 let currentMode = localStorage.getItem('mode') || 'dark';
 let currentSort = 'newest';
 
@@ -121,13 +121,16 @@ async function loadProjects() {
     }
 }
 
-// Fetch from GitHub API
+// Fetch from GitHub API (fallback only - not used for refresh)
+// Note: This is a fallback that fetches recent repos when projects.json is unavailable.
+// Pinned repositories are managed via GitHub Actions, which updates projects.json.
 async function fetchFromGitHubAPI() {
     const username = 'brianwalkerdev';
     
-    // Note: GitHub doesn't have a public API for pinned repos, so we'll get all repos
-    // and filter by a specific criterion (e.g., topics or custom flag)
-    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+    // Fallback to REST API for public repo data (when projects.json doesn't exist)
+    // Note: This gets recent repos, not pinned ones. Pinned repos are managed via
+    // the GitHub Actions workflow which updates projects.json.
+    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
     
     if (!response.ok) {
         throw new Error('Failed to fetch from GitHub API');
@@ -138,7 +141,6 @@ async function fetchFromGitHubAPI() {
     // Transform GitHub API response to our project format
     return repos
         .filter(repo => !repo.fork && !repo.archived) // Filter out forks and archived repos
-        .slice(0, 10) // Limit to top 10 repos
         .map(repo => ({
             name: repo.name,
             description: repo.description || 'No description available',
@@ -275,8 +277,15 @@ async function refreshProjects() {
     showToast('Refreshing projects...', 'info');
     
     try {
-        // Force fetch from GitHub API
-        projects = await fetchFromGitHubAPI();
+        // Force reload from projects.json (bypassing cache)
+        const timestamp = new Date().getTime();
+        const response = await fetch(`projects.json?t=${timestamp}`);
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch projects.json');
+        }
+        
+        projects = await response.json();
         filteredProjects = [...projects];
         
         // Re-apply current sort
