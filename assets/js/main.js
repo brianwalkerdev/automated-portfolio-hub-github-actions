@@ -123,8 +123,7 @@ async function loadProjects() {
 
 // Fetch from GitHub API (fallback only - not used for refresh)
 // Note: This is a fallback that fetches recent repos when projects.json is unavailable.
-// The refresh button reloads projects.json which is kept up-to-date by GitHub Actions
-// with pinned repositories from the user's profile.
+// Pinned repositories are managed via GitHub Actions, which updates projects.json.
 async function fetchFromGitHubAPI() {
     const username = 'brianwalkerdev';
     
