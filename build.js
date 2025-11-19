@@ -23,7 +23,18 @@ const SOURCE_DIRS = [
 // Clean build directory
 console.log('🧹 Cleaning build directory...');
 if (fs.existsSync(BUILD_DIR)) {
-  fs.rmSync(BUILD_DIR, { recursive: true });
+  try {
+    if (typeof fs.rmSync === 'function') {
+      fs.rmSync(BUILD_DIR, { recursive: true, force: true });
+    } else if (typeof fs.rmdirSync === 'function') {
+      fs.rmdirSync(BUILD_DIR, { recursive: true });
+    } else {
+      throw new Error('No suitable method found to remove directories. Please upgrade your Node.js version.');
+    }
+  } catch (err) {
+    console.error(`Failed to remove ${BUILD_DIR}:`, err.message);
+    process.exit(1);
+  }
 }
 fs.mkdirSync(BUILD_DIR);
 
