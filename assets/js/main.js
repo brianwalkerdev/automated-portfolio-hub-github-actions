@@ -1,7 +1,7 @@
 // State Management
 let projects = [];
 let filteredProjects = [];
-let currentTheme = localStorage.getItem('theme') || 'neutral';
+let currentTheme = localStorage.getItem('theme') || 'green';
 let currentMode = localStorage.getItem('mode') || 'dark';
 let currentSort = 'newest';
 
@@ -125,28 +125,60 @@ async function loadProjects() {
 async function fetchFromGitHubAPI() {
     const username = 'brianwalkerdev';
     
-    // Note: GitHub doesn't have a public API for pinned repos, so we'll get all repos
-    // and filter by a specific criterion (e.g., topics or custom flag)
-    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+    // Use GitHub GraphQL API to fetch pinned repositories
+    const query = `
+        query {
+            user(login: "${username}") {
+                pinnedItems(first: 6, types: REPOSITORY) {
+                    nodes {
+                        ... on Repository {
+                            name
+                            description
+                            updatedAt
+                            url
+                            homepageUrl
+                            openGraphImageUrl
+                            usesCustomOpenGraphImage
+                        }
+                    }
+                }
+            }
+        }
+    `;
+    
+    const response = await fetch('https://api.github.com/graphql', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query })
+    });
     
     if (!response.ok) {
-        throw new Error('Failed to fetch from GitHub API');
+        throw new Error('Failed to fetch from GitHub GraphQL API');
     }
     
-    const repos = await response.json();
+    const data = await response.json();
     
-    // Transform GitHub API response to our project format
-    return repos
-        .filter(repo => !repo.fork && !repo.archived) // Filter out forks and archived repos
-        .slice(0, 10) // Limit to top 10 repos
-        .map(repo => ({
-            name: repo.name,
-            description: repo.description || 'No description available',
-            updated: repo.updated_at,
-            url: repo.html_url,
-            homepage: repo.homepage || `/${repo.name}/`,
-            thumbnail: `assets/img/${repo.name}.png`
-        }));
+    // Check for errors in the GraphQL response
+    if (data.errors) {
+        console.error('GraphQL errors:', data.errors);
+        throw new Error('GraphQL query failed');
+    }
+    
+    const pinnedRepos = data.data?.user?.pinnedItems?.nodes || [];
+    
+    // Transform GraphQL response to our project format
+    return pinnedRepos.map(repo => ({
+        name: repo.name,
+        description: repo.description || 'No description available',
+        updated: repo.updatedAt,
+        url: repo.url,
+        homepage: repo.homepageUrl || `/${repo.name}/`,
+        thumbnail: `assets/img/${repo.name}.png`,
+        openGraphImageUrl: repo.openGraphImageUrl,
+        usesCustomOpenGraphImage: repo.usesCustomOpenGraphImage
+    }));
 }
 
 // Render Projects
