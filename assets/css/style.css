@@ -183,6 +183,17 @@ body {
     line-height: 1.8;
 }
 
+.about a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.about a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
 /* Controls Section */
 .controls {
     display: flex;

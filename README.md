@@ -103,6 +103,12 @@ projects.brianwalker.dev/
 > - `.github/workflows/deploy-and-update.yml` is a GitHub Actions workflow that automates building and deploying the site, as well as updating project data on a schedule.  
 >  
 > For more details on the build and deployment process, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## 📚 Documentation
+
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Development setup, architecture guide, and contribution guidelines
+- **[LICENSE](LICENSE)** - MIT License details and terms of use
+
 ## 👤 Contact
 
 **Brian Walker**  
