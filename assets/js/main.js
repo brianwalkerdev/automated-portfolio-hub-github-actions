@@ -10,7 +10,7 @@ const projectsGrid = document.getElementById('projects-grid');
 const searchInput = document.getElementById('search');
 const sortSelect = document.getElementById('sort-select');
 const themeToggle = document.getElementById('theme-toggle');
-const refreshBtn = document.getElementById('refresh-btn');
+// const refreshBtn = document.getElementById('refresh-btn'); // Removed from UI
 const themeBtns = document.querySelectorAll('.theme-btn');
 const loading = document.getElementById('loading');
 const noResults = document.getElementById('no-results');
@@ -31,7 +31,10 @@ function initializeTheme() {
     // Set theme mode
     if (currentMode === 'light') {
         document.body.classList.add('light-mode');
-        themeToggle.querySelector('.theme-icon').textContent = '☀️';
+        themeToggle.setAttribute('aria-pressed', 'true');
+    } else {
+        document.body.classList.remove('light-mode');
+        themeToggle.setAttribute('aria-pressed', 'false');
     }
     
     // Set accent theme
@@ -63,8 +66,8 @@ function attachEventListeners() {
         btn.addEventListener('click', () => changeAccentTheme(btn.dataset.theme));
     });
     
-    // Refresh button
-    refreshBtn.addEventListener('click', refreshProjects);
+    // Refresh button - removed from UI
+    // refreshBtn.addEventListener('click', refreshProjects);
     
     // Image overlay
     overlayClose.addEventListener('click', closeImageOverlay);
@@ -246,11 +249,11 @@ function toggleThemeMode() {
     if (currentMode === 'dark') {
         currentMode = 'light';
         document.body.classList.add('light-mode');
-        themeToggle.querySelector('.theme-icon').textContent = '☀️';
+        themeToggle.setAttribute('aria-pressed', 'true');
     } else {
         currentMode = 'dark';
         document.body.classList.remove('light-mode');
-        themeToggle.querySelector('.theme-icon').textContent = '🌙';
+        themeToggle.setAttribute('aria-pressed', 'false');
     }
     
     localStorage.setItem('mode', currentMode);
