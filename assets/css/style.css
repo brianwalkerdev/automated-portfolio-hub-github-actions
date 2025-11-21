@@ -168,7 +168,7 @@ body {
 .social-links a:focus {
     background: var(--accent-color);
     border-color: var(--accent-color);
-    color: white;
+    color: var(--text-primary);
     transform: scale(1.1);
 }
 
