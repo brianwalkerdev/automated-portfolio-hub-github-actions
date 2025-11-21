@@ -657,6 +657,19 @@ body.light-mode .theme-toggle-thumb {
         overflow-x: auto;
         width: 100%;
         padding-bottom: 5px;
+        position: relative;
+    }
+
+    .social-links::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 100%;
+        pointer-events: none;
+        background: linear-gradient(to left, var(--bg-primary) 70%, transparent 100%);
+        z-index: 1;
     }
     
     .header-controls {
