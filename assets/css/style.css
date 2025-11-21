@@ -216,7 +216,7 @@ body.light-mode .theme-toggle-track {
 }
 
 body.light-mode .theme-toggle-thumb {
-    transform: translateX(32px);
+    transform: translateX(34px);
 }
 
 .theme-toggle-icon {
