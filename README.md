@@ -16,6 +16,8 @@ A dynamic portfolio website that automatically showcases my pinned GitHub reposi
 - **Responsive Design** - Optimized for desktop, tablet, and mobile devices
 - **Image Lightbox** - Click project thumbnails for full-size preview
 - **Weekly Auto-Updates** - GitHub Actions workflow refreshes projects every week
+- **SEO Optimized** - Comprehensive on-page SEO, structured data (Schema.org), sitemap, and performance optimization
+- **Accessible** - WCAG compliant with keyboard navigation, screen reader support, and ARIA labels
 
 ## 🛠️ Tech Stack
 
@@ -85,6 +87,8 @@ Upload the contents of the `dist/` folder to any static hosting service.
 projects.brianwalker.dev/
 ├── index.html              # Main portfolio page
 ├── projects.json           # Auto-generated project metadata
+├── robots.txt              # Search engine crawler directives
+├── sitemap.xml             # XML sitemap for SEO
 ├── assets/
 │   ├── css/
 │   │   └── style.css      # Styles with theme support
@@ -93,6 +97,8 @@ projects.brianwalker.dev/
 │   └── img/               # Project thumbnails
 ├── build.js               # Build script for static compilation
 ├── package.json           # Project metadata and scripts
+├── SEO-CHANGELOG.md       # Documentation of SEO optimizations
+├── SEO-DEPLOYMENT-CHECKLIST.md  # Post-deployment SEO checklist
 └── .github/
     └── workflows/
         └── deploy-and-update.yml  # Automated deployment
@@ -103,6 +109,21 @@ projects.brianwalker.dev/
 > - `.github/workflows/deploy-and-update.yml` is a GitHub Actions workflow that automates building and deploying the site, as well as updating project data on a schedule.  
 >  
 > For more details on the build and deployment process, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## 🔍 SEO & Performance
+
+This portfolio is optimized for search engines and performance:
+
+- **Semantic HTML5** with proper heading hierarchy and ARIA labels
+- **Structured Data** using JSON-LD (Person, WebSite, ProfilePage schemas)
+- **Open Graph & Twitter Cards** for optimized social media sharing
+- **robots.txt & sitemap.xml** for proper search engine indexation
+- **Lazy loading images** and deferred JavaScript for fast page loads
+- **WCAG 2.1 compliant** with full keyboard navigation and screen reader support
+- **Optimized meta tags** with keyword-rich titles and descriptions
+
+For detailed information about SEO optimizations, see [SEO-CHANGELOG.md](SEO-CHANGELOG.md).  
+For post-deployment SEO tasks, see [SEO-DEPLOYMENT-CHECKLIST.md](SEO-DEPLOYMENT-CHECKLIST.md).
 
 ## 📚 Documentation
 

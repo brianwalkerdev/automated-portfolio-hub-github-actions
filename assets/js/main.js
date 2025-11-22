@@ -175,6 +175,7 @@ function renderProjects() {
 function createProjectCard(project) {
     const card = document.createElement('div');
     card.className = 'project-card';
+    card.setAttribute('role', 'listitem');
     
     const formattedDate = formatDate(project.updated);
     
@@ -189,7 +190,7 @@ function createProjectCard(project) {
     card.innerHTML = `
         <img 
             src="${thumbnailSrc}" 
-            alt="${project.name} thumbnail" 
+            alt="${escapeHtml(project.name)} - ${escapeHtml(project.description)}" 
             class="project-thumbnail"
             loading="lazy"
             onerror="this.src='/assets/img/default-thumbnail.svg'"
@@ -199,10 +200,10 @@ function createProjectCard(project) {
             <p class="project-description">${escapeHtml(project.description)}</p>
             <p class="project-date">Updated: ${formattedDate}</p>
             <div class="project-links">
-                <a href="${homepage}" class="project-link primary" target="_blank" rel="noopener noreferrer">
+                <a href="${homepage}" class="project-link primary" target="_blank" rel="noopener noreferrer" title="View live demo of ${escapeHtml(project.name)}">
                     Live Demo
                 </a>
-                <a href="${project.url}" class="project-link secondary" target="_blank" rel="noopener noreferrer">
+                <a href="${project.url}" class="project-link secondary" target="_blank" rel="noopener noreferrer" title="View source code for ${escapeHtml(project.name)} on GitHub">
                     View Code
                 </a>
             </div>
@@ -265,12 +266,14 @@ function changeAccentTheme(theme) {
     document.body.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     
-    // Update active button
+    // Update active button and aria-pressed state
     themeBtns.forEach(btn => {
         if (btn.dataset.theme === theme) {
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
         } else {
             btn.classList.remove('active');
+            btn.setAttribute('aria-pressed', 'false');
         }
     });
 }
