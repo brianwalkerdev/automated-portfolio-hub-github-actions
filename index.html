@@ -3,38 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Brian Walker's Portfolio Hub - Dynamic showcase of web development projects featuring HTML, CSS, JavaScript, and responsive design. View live demos and source code.">
-    <meta name="keywords" content="Brian Walker, web developer, portfolio, JavaScript, HTML, CSS, responsive design, GitHub projects">
+    <meta name="description" content="Brian Walker - Full Stack Web Developer Portfolio. Explore interactive JavaScript projects, responsive web designs, and modern UI/UX solutions. View live demos and open-source code on GitHub.">
+    <meta name="keywords" content="Brian Walker, web developer, portfolio, JavaScript, HTML, CSS, responsive design, GitHub projects, full stack developer, front-end development, UI/UX, web applications">
+    <meta name="author" content="Brian Walker">
     <meta name="theme-color" content="#1a1a1a">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://projects.brianwalker.dev/">
     
     <!-- OpenGraph Meta Tags -->
-    <meta property="og:title" content="Brian Walker Portfolio Hub">
-    <meta property="og:description" content="Showcasing my latest projects and developments">
+    <meta property="og:title" content="Brian Walker - Full Stack Web Developer Portfolio | JavaScript & Responsive Design">
+    <meta property="og:description" content="Explore Brian Walker's portfolio of web development projects including interactive JavaScript applications, responsive designs, and modern UI/UX solutions. View live demos and source code.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://projects.brianwalker.dev">
     <meta property="og:image" content="https://projects.brianwalker.dev/assets/img/project-thumbnail.png">
+    <meta property="og:image:alt" content="Brian Walker Portfolio Hub - Web Development Projects Showcase">
+    <meta property="og:site_name" content="Brian Walker Portfolio Hub">
+    <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Brian Walker Portfolio Hub">
-    <meta name="twitter:description" content="Showcasing my latest projects and developments">
+    <meta name="twitter:site" content="@brianwalkerdev">
+    <meta name="twitter:creator" content="@brianwalkerdev">
+    <meta name="twitter:title" content="Brian Walker - Full Stack Web Developer Portfolio">
+    <meta name="twitter:description" content="Explore Brian Walker's portfolio of web development projects including interactive JavaScript applications, responsive designs, and modern UI/UX solutions.">
     <meta name="twitter:image" content="https://projects.brianwalker.dev/assets/img/project-thumbnail.png">
+    <meta name="twitter:image:alt" content="Brian Walker Portfolio Hub - Web Development Projects Showcase">
     
-    <title>Brian Walker - Portfolio Hub</title>
+    <title>Brian Walker - Full Stack Web Developer Portfolio | JavaScript & Responsive Design</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Brian Walker",
+      "url": "https://projects.brianwalker.dev",
+      "image": "https://projects.brianwalker.dev/assets/img/project-thumbnail.png",
+      "jobTitle": "Full Stack Web Developer",
+      "description": "Full Stack Web Developer specializing in JavaScript, responsive design, and modern UI/UX solutions",
+      "sameAs": [
+        "https://github.com/brianwalkerdev",
+        "https://x.com/brianwalkerdev",
+        "https://www.linkedin.com/in/brianwalkerdev",
+        "https://www.youtube.com/@BrianWalkerDev",
+        "https://www.facebook.com/BWalkerDev"
+      ],
+      "knowsAbout": ["JavaScript", "HTML", "CSS", "Web Development", "Responsive Design", "UI/UX Design", "Front-end Development", "GitHub"],
+      "email": "brianwalkerdev@users.noreply.github.com"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Brian Walker Portfolio Hub",
+      "url": "https://projects.brianwalker.dev",
+      "description": "Dynamic portfolio showcasing web development projects with live demos and source code",
+      "author": {
+        "@type": "Person",
+        "name": "Brian Walker"
+      },
+      "inLanguage": "en-US"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "dateCreated": "2025-01-01",
+      "dateModified": "2025-11-22",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Brian Walker",
+        "description": "Full Stack Web Developer Portfolio"
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
 
     <!-- Image Overlay -->
-    <div id="image-overlay" class="image-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div id="image-overlay" class="image-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
         <button id="overlay-close" class="image-overlay-close" aria-label="Close image overlay">&times;</button>
-        <img id="overlay-image" src="data:," alt="Full size project thumbnail">
+        <img id="overlay-image" src="data:," alt="Full size project thumbnail preview" loading="lazy">
     </div>
 
     <!-- Header -->
@@ -84,28 +142,33 @@
         </div>
     </header>
 
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Main Content -->
-    <main class="main">
+    <main id="main-content" class="main">
         <div class="container">
             <!-- About Section -->
-            <section class="about-section">
-                <h2>About</h2>
+            <section class="about-section" aria-labelledby="about-heading">
+                <h2 id="about-heading">About This Portfolio</h2>
                 <div class="about">
-                    <p>Welcome to my portfolio hub! This page automatically showcases all my pinned GitHub repositories. Each project includes a live demo and links to the source code. You can view the source for this portfolio hub itself on <a href="https://github.com/brianwalkerdev/automated-portfolio-hub-github-actions" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+                    <p>Welcome to my <strong>web development portfolio</strong>! This dynamic portfolio hub automatically showcases my featured GitHub repositories, each representing a unique web development project. Every project includes an <strong>interactive live demo</strong> and access to the complete <a href="https://github.com/brianwalkerdev" target="_blank" rel="noopener noreferrer" title="View Brian Walker's GitHub profile">open-source code on GitHub</a>.</p>
+                    <p>From <strong>responsive UI/UX designs</strong> to <strong>interactive JavaScript applications</strong>, explore real-world examples of modern web development best practices. Use the search and filter tools below to find projects that interest you. This portfolio hub itself is <a href="https://github.com/brianwalkerdev/automated-portfolio-hub-github-actions" target="_blank" rel="noopener noreferrer" title="View the portfolio hub source code">open source and available on GitHub</a>.</p>
                 </div>
             </section>
 
             <!-- Controls Section -->
-            <section class="controls">
+            <section class="controls" aria-label="Project filters and customization options">
                 <!-- Search Bar -->
                 <div class="search-container">
-                    <input type="text" id="search" class="search-input" placeholder="Search projects...">
+                    <label for="search" class="visually-hidden">Search projects by name or description</label>
+                    <input type="text" id="search" class="search-input" placeholder="Search projects..." aria-label="Search projects by name or description">
                 </div>
 
                 <!-- Sorting Controls -->
                 <div class="sort-container">
                     <label for="sort-select">Sort by:</label>
-                    <select id="sort-select" class="sort-select">
+                    <select id="sort-select" class="sort-select" aria-label="Sort projects by date or alphabetically">
                         <option value="newest">Newest First</option>
                         <option value="alphabetical">Alphabetical</option>
                     </select>
@@ -113,46 +176,47 @@
 
                 <!-- Theme Selector -->
                 <div class="theme-selector">
-                    <label>Accent Color:</label>
-                    <div class="theme-buttons">
-                        <button class="theme-btn" data-theme="neutral" aria-label="Neutral theme"></button>
-                        <button class="theme-btn active" data-theme="green" aria-label="Green theme"></button>
-                        <button class="theme-btn" data-theme="blue" aria-label="Blue theme"></button>
-                        <button class="theme-btn" data-theme="purple" aria-label="Purple theme"></button>
-                        <button class="theme-btn" data-theme="orange" aria-label="Orange theme"></button>
+                    <label id="accent-color-label">Accent Color:</label>
+                    <div class="theme-buttons" role="group" aria-labelledby="accent-color-label">
+                        <button class="theme-btn" data-theme="neutral" aria-label="Select neutral gray theme" title="Neutral Gray"></button>
+                        <button class="theme-btn active" data-theme="green" aria-label="Select green theme" aria-pressed="true" title="Green"></button>
+                        <button class="theme-btn" data-theme="blue" aria-label="Select blue theme" title="Blue"></button>
+                        <button class="theme-btn" data-theme="purple" aria-label="Select purple theme" title="Purple"></button>
+                        <button class="theme-btn" data-theme="orange" aria-label="Select orange theme" title="Orange"></button>
                     </div>
                 </div>
             </section>
 
             <!-- Projects Grid -->
-            <section class="projects-section">
-                <h2>Projects</h2>
+            <section class="projects-section" aria-labelledby="projects-heading">
+                <h2 id="projects-heading">Featured Web Development Projects</h2>
                 <div id="loading" class="loading" role="status" aria-live="polite">Loading projects...</div>
-                <div id="projects-grid" class="projects-grid"></div>
-                <div id="no-results" class="no-results" style="display: none;" role="status" aria-live="polite">No projects found.</div>
+                <div id="projects-grid" class="projects-grid" role="list"></div>
+                <div id="no-results" class="no-results" style="display: none;" role="status" aria-live="polite">No projects found matching your search criteria.</div>
             </section>
 
             <!-- Contact Section -->
             <section class="contact-section" aria-labelledby="contact-heading">
-                <h2 id="contact-heading">Contact</h2>
+                <h2 id="contact-heading">Get in Touch</h2>
                 <div class="contact">
-                    <p>Have a question or want to work together? Feel free to reach out using the form below.</p>
-                    <form id="my-form" class="contact-form" action="https://formspree.io/f/myzvkbzl" method="POST">
+                    <p><strong>Have a project in mind or want to collaborate?</strong> I'm always interested in discussing new opportunities, freelance projects, or answering questions about web development. Fill out the form below and I'll get back to you as soon as possible.</p>
+                    <p>You can also connect with me on <a href="https://github.com/brianwalkerdev" target="_blank" rel="noopener noreferrer" title="Connect on GitHub">GitHub</a>, <a href="https://www.linkedin.com/in/brianwalkerdev" target="_blank" rel="noopener noreferrer" title="Connect on LinkedIn">LinkedIn</a>, or <a href="https://x.com/brianwalkerdev" target="_blank" rel="noopener noreferrer" title="Follow on X (Twitter)">X (Twitter)</a>.</p>
+                    <form id="my-form" class="contact-form" action="https://formspree.io/f/myzvkbzl" method="POST" aria-label="Contact form">
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="contact-name">Name</label>
-                            <input type="text" id="contact-name" name="name" required placeholder="Your name">
+                            <label for="contact-name">Name *</label>
+                            <input type="text" id="contact-name" name="name" required placeholder="Your name" aria-required="true">
                         </div>
                         <div class="form-field">
-                            <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" name="email" required placeholder="your@email.com">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" name="email" required placeholder="your@email.com" aria-required="true">
                         </div>
                     </div>
                     <div class="form-field">
-                        <label for="contact-message">Message</label>
-                        <textarea id="contact-message" name="message" rows="4" required placeholder="Your message..."></textarea>
+                        <label for="contact-message">Message *</label>
+                        <textarea id="contact-message" name="message" rows="4" required placeholder="Tell me about your project or question..." aria-required="true"></textarea>
                     </div>
-                    <button type="submit" id="my-form-button" class="button">Send Message</button>
+                    <button type="submit" id="my-form-button" class="button" aria-label="Submit contact form">Send Message</button>
                     <p id="my-form-status" class="form-status" aria-live="polite"></p>
                     </form>
                 </div>
@@ -161,31 +225,31 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-left">
                     <p>&copy; 2025 Brian Walker. All rights reserved.</p>
-                    <nav class="footer-social-links" aria-label="Footer social media links">
-                        <a href="https://github.com/brianwalkerdev" target="_blank" rel="noopener noreferrer">GitHub @brianwalkerdev</a>
-                        <span class="separator">|</span>
-                        <a href="https://x.com/brianwalkerdev" target="_blank" rel="noopener noreferrer">X / Twitter @brianwalkerdev</a>
-                        <span class="separator">|</span>
-                        <a href="https://www.linkedin.com/in/brianwalkerdev" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <span class="separator">|</span>
-                        <a href="https://www.youtube.com/@BrianWalkerDev" target="_blank" rel="noopener noreferrer">YouTube @BrianWalkerDev</a>
-                        <span class="separator">|</span>
-                        <a href="https://www.facebook.com/BWalkerDev" target="_blank" rel="noopener noreferrer">Facebook @BWalkerDev</a>
+                    <nav class="footer-social-links" aria-label="Social media profiles">
+                        <a href="https://github.com/brianwalkerdev" target="_blank" rel="noopener noreferrer" title="View Brian Walker's GitHub profile and open-source projects">GitHub</a>
+                        <span class="separator" aria-hidden="true">|</span>
+                        <a href="https://x.com/brianwalkerdev" target="_blank" rel="noopener noreferrer" title="Follow Brian Walker on X (Twitter) for web development updates">X / Twitter</a>
+                        <span class="separator" aria-hidden="true">|</span>
+                        <a href="https://www.linkedin.com/in/brianwalkerdev" target="_blank" rel="noopener noreferrer" title="Connect with Brian Walker on LinkedIn for professional networking">LinkedIn</a>
+                        <span class="separator" aria-hidden="true">|</span>
+                        <a href="https://www.youtube.com/@BrianWalkerDev" target="_blank" rel="noopener noreferrer" title="Subscribe to Brian Walker's YouTube channel for web development tutorials">YouTube</a>
+                        <span class="separator" aria-hidden="true">|</span>
+                        <a href="https://www.facebook.com/BWalkerDev" target="_blank" rel="noopener noreferrer" title="Follow Brian Walker on Facebook">Facebook</a>
                     </nav>
                 </div>
                 <div class="footer-right">
-                    <a href="https://github.com/brianwalkerdev/automated-portfolio-hub-github-actions" target="_blank" rel="noopener noreferrer">View this project on GitHub</a>
+                    <a href="https://github.com/brianwalkerdev/automated-portfolio-hub-github-actions" target="_blank" rel="noopener noreferrer" title="View the source code for this portfolio hub on GitHub">View Portfolio Hub Source Code</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js" defer></script>
     <script>
         (function() {
             var form = document.getElementById("my-form");

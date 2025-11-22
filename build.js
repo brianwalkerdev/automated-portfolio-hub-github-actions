@@ -13,6 +13,8 @@ const BUILD_DIR = 'dist';
 const SOURCE_FILES = [
   'index.html',
   'projects.json',
+  'robots.txt',
+  'sitemap.xml',
   '.nojekyll',
   'CNAME'
 ];

@@ -1,0 +1,11 @@
+# robots.txt for Portfolio Hub
+# https://projects.brianwalker.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://projects.brianwalker.dev/sitemap.xml
+
+# Crawl-delay (optional - helps with server load)
+Crawl-delay: 1

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- Main Portfolio Page -->
+    <url>
+        <loc>https://projects.brianwalker.dev/</loc>
+        <lastmod>2025-11-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Project Pages -->
+    <url>
+        <loc>https://projects.brianwalker.dev/responsive-admin-dashboard-web-app/</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://projects.brianwalker.dev/phrase-guessing-game-javascript-app/</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://projects.brianwalker.dev/interactive-photo-gallery-vanilla-javascript/</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://projects.brianwalker.dev/sass-ui-kit-modular-design-system/</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://projects.brianwalker.dev/newsletter-signup-landing-page-ui-ux/</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://projects.brianwalker.dev/responsive-personal-portfolio-website/</loc>
+        <lastmod>2025-11-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+</urlset>
