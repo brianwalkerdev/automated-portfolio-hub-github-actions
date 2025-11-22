@@ -601,6 +601,119 @@ body.light-mode .theme-toggle-icon--dark {
     }
 }
 
+/* Contact Section */
+.contact {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 15px;
+    margin-top: 40px;
+}
+
+.contact h2 {
+    font-family: var(--font-heading);
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    font-size: 1.75rem;
+}
+
+.contact > p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.contact-form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    transition: var(--transition);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 10%, transparent);
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.contact-form .button {
+    padding: 11px 28px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    align-self: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .button:hover {
+    background: var(--accent-hover);
+    transform: translate3d(0, -1px, 0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contact-form .button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.form-status {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 5px;
+    min-height: 1.5em;
+}
+
 /* Footer */
 .footer {
     background-color: var(--bg-secondary);
@@ -730,6 +843,19 @@ body.light-mode .theme-toggle-icon--dark {
     
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .contact {
+        padding: 20px;
+    }
+    
+    .contact-form {
+        max-width: 100%;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 }
 
