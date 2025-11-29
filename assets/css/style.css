@@ -14,6 +14,11 @@
     --text-secondary: #b0b0b0;
     --border-color: #404040;
     
+    /* Header Colors */
+    --header-bg: #0f0f0f;
+    --header-text: #ffffff;
+    --header-border: rgba(255, 255, 255, 0.1);
+    
     /* Green Theme (Default) */
     --accent-color: #10b981;
     --accent-hover: #059669;
@@ -140,91 +145,69 @@ body {
 
 /* Header */
 .header {
-    background-color: var(--bg-secondary);
-    padding: 30px 0;
-    border-bottom: 1px solid var(--border-color);
+    background-color: var(--header-bg);
+    padding: 24px 0;
+    border-bottom: 1px solid var(--header-border);
 }
 
 .header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 24px;
 }
 
-.header-main {
+.header-left {
     display: flex;
     align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.header-identity {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    gap: 16px;
 }
 
 .header-logo {
-    height: 70px;
+    height: 40px;
     width: auto;
-    border-radius: 8px;
     object-fit: contain;
-    transition: var(--transition);
 }
 
-.header-logo:hover {
-    transform: scale(1.05);
-}
-
-.header-text h1 {
+.header-name {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 5px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--header-text);
+    letter-spacing: -0.01em;
 }
 
-.subtitle {
-    font-family: var(--font-heading);
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-}
-
-/* Social Links in Header */
-.social-links {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.social-links a {
+.header-right {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    color: var(--text-primary);
-    font-size: 1rem;
-    transition: var(--transition);
+    gap: 24px;
+}
+
+.header-right a {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--header-text);
     text-decoration: none;
+    opacity: 0.8;
+    transition: var(--transition);
 }
 
-.social-links a:hover,
-.social-links a:focus {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: var(--text-primary);
-    transform: scale(1.1);
+.header-right a:hover,
+.header-right a:focus {
+    opacity: 1;
+    text-decoration: underline;
 }
 
-.header-controls {
+/* Theme Controls Container */
+.theme-controls-container {
+    background-color: var(--bg-secondary);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.theme-controls-container .container {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    justify-content: flex-end;
 }
 
 /* Theme Toggle Slider */
@@ -840,56 +823,27 @@ body.light-mode .theme-toggle-icon--dark {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+
+/* Header responsive - 600px breakpoint as specified */
+@media (max-width: 600px) {
     .header-inner {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        gap: 16px;
     }
     
-    .header-main {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+    .header-left {
+        justify-content: center;
     }
     
-    .header-identity {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+    .header-right {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
     }
-    
-    .header-logo {
-        height: 60px;
-    }
-    
-    .header-text h1 {
-        font-size: 2rem;
-    }
-    
-    .social-links {
-        overflow-x: auto;
-        width: 100%;
-        padding-bottom: 5px;
-        position: relative;
-    }
+}
 
-    .social-links::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 40px;
-        height: 100%;
-        pointer-events: none;
-        background: linear-gradient(to left, var(--bg-primary) 70%, transparent 100%);
-        z-index: 1;
-    }
-    
-    .header-controls {
-        align-self: flex-end;
-    }
-    
+@media (max-width: 768px) {
     .footer-inner {
         flex-direction: column;
         text-align: left;
@@ -934,12 +888,12 @@ body.light-mode .theme-toggle-icon--dark {
 }
 
 @media (max-width: 480px) {
-    .header-text h1 {
-        font-size: 1.5rem;
+    .header-logo {
+        height: 32px;
     }
     
-    .header-logo {
-        height: 50px;
+    .header-name {
+        font-size: 1.1rem;
     }
     
     .project-links {
