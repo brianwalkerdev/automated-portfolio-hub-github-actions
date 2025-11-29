@@ -141,35 +141,40 @@ body {
 /* Header */
 .header {
     background-color: var(--bg-secondary);
-    padding: 30px 0;
+    padding: 15px 0;
     border-bottom: 1px solid var(--border-color);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    width: 100%;
+    gap: 15px;
 }
 
 .header-main {
     display: flex;
     align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .header-identity {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .header-logo {
-    height: 70px;
+    height: 50px;
     width: auto;
-    border-radius: 8px;
+    border-radius: 6px;
     object-fit: contain;
     transition: var(--transition);
 }
@@ -180,21 +185,21 @@ body {
 
 .header-text h1 {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .subtitle {
     font-family: var(--font-heading);
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
 }
 
 /* Social Links in Header */
 .social-links {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
 }
 
@@ -202,13 +207,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 50%;
     color: var(--text-primary);
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: var(--transition);
     text-decoration: none;
 }
@@ -841,53 +846,50 @@ body.light-mode .theme-toggle-icon--dark {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
     .header-inner {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        gap: 12px;
     }
     
     .header-main {
         width: 100%;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+        align-items: center;
+        gap: 12px;
     }
     
     .header-identity {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
     }
     
     .header-logo {
-        height: 60px;
+        height: 45px;
     }
     
     .header-text h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.85rem;
     }
     
     .social-links {
-        overflow-x: auto;
-        width: 100%;
-        padding-bottom: 5px;
-        position: relative;
-    }
-
-    .social-links::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 40px;
-        height: 100%;
-        pointer-events: none;
-        background: linear-gradient(to left, var(--bg-primary) 70%, transparent 100%);
-        z-index: 1;
+        justify-content: center;
+        flex-wrap: wrap;
     }
     
     .header-controls {
-        align-self: flex-end;
+        align-self: center;
     }
     
     .footer-inner {
@@ -935,11 +937,11 @@ body.light-mode .theme-toggle-icon--dark {
 
 @media (max-width: 480px) {
     .header-text h1 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
     
     .header-logo {
-        height: 50px;
+        height: 40px;
     }
     
     .project-links {
