@@ -167,6 +167,7 @@ body {
     height: 40px;
     width: auto;
     object-fit: contain;
+    border-radius: 8px;
 }
 
 .header-name {
