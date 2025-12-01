@@ -10,9 +10,11 @@
     --bg-primary: #1a1a1a;
     --bg-secondary: #2a2a2a;
     --bg-card: #2f2f2f;
+    --bg-header: #0f0f0f;
     --text-primary: #ffffff;
     --text-secondary: #b0b0b0;
     --border-color: #404040;
+    --border-header: rgba(255, 255, 255, 0.1);
     
     /* Green Theme (Default) */
     --accent-color: #10b981;
@@ -31,9 +33,11 @@ body.light-mode {
     --bg-primary: #ffffff;
     --bg-secondary: #f5f5f5;
     --bg-card: #ffffff;
+    --bg-header: #ffffff;
     --text-primary: #1a1a1a;
     --text-secondary: #666666;
     --border-color: #e0e0e0;
+    --border-header: rgba(0, 0, 0, 0.1);
 }
 
 /* Theme Colors */
@@ -140,55 +144,43 @@ body {
 
 /* Header */
 .header {
-    background-color: var(--bg-secondary);
-    padding: 30px 0;
-    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-header);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-header);
 }
 
 .header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 24px;
 }
 
-.header-main {
+/* Header Left Section */
+.header-left {
     display: flex;
     align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.header-identity {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    gap: 16px;
 }
 
 .header-logo {
-    height: 70px;
+    height: 40px;
     width: auto;
-    border-radius: 8px;
     object-fit: contain;
-    transition: var(--transition);
 }
 
-.header-logo:hover {
-    transform: scale(1.05);
-}
-
-.header-text h1 {
+.header-name {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 5px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
-.subtitle {
-    font-family: var(--font-heading);
-    color: var(--text-secondary);
-    font-size: 1.1rem;
+/* Header Right Section */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 /* Social Links in Header */
@@ -219,12 +211,6 @@ body {
     border-color: var(--accent-color);
     color: var(--text-primary);
     transform: scale(1.1);
-}
-
-.header-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 /* Theme Toggle Slider */
@@ -840,56 +826,29 @@ body.light-mode .theme-toggle-icon--dark {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+
+/* Header responsive - stack vertically below 600px */
+@media (max-width: 600px) {
     .header-inner {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        gap: 16px;
     }
     
-    .header-main {
-        width: 100%;
+    .header-left {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+        align-items: center;
+        gap: 12px;
     }
     
-    .header-identity {
+    .header-right {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+        align-items: center;
+        gap: 16px;
     }
-    
-    .header-logo {
-        height: 60px;
-    }
-    
-    .header-text h1 {
-        font-size: 2rem;
-    }
-    
-    .social-links {
-        overflow-x: auto;
-        width: 100%;
-        padding-bottom: 5px;
-        position: relative;
-    }
+}
 
-    .social-links::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 40px;
-        height: 100%;
-        pointer-events: none;
-        background: linear-gradient(to left, var(--bg-primary) 70%, transparent 100%);
-        z-index: 1;
-    }
-    
-    .header-controls {
-        align-self: flex-end;
-    }
-    
+@media (max-width: 768px) {
     .footer-inner {
         flex-direction: column;
         text-align: left;
@@ -934,12 +893,17 @@ body.light-mode .theme-toggle-icon--dark {
 }
 
 @media (max-width: 480px) {
-    .header-text h1 {
-        font-size: 1.5rem;
+    .header-name {
+        font-size: 1.1rem;
     }
     
     .header-logo {
-        height: 50px;
+        height: 32px;
+    }
+    
+    .header-right {
+        justify-content: center;
+        gap: 16px;
     }
     
     .project-links {
